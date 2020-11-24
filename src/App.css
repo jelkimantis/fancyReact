@@ -27,10 +27,13 @@
 .App-link {
   color: #61dafb;
 }
+body {
+  background-color: gray;
+}
 .fancyDiv {
  height: 100%;
  width: 100%;
- background-color: black;
+ background-color: gray;
 }
 .bigDiv {
   margin: 50px;
