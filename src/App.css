@@ -28,10 +28,18 @@
   color: #61dafb;
 }
 .fancyDiv {
-
+ height: 100%;
+ width: 100%;
+ background-color: rgb(71, 5, 71);
 }
 .bigDiv {
-  
+  margin: 50px;
+  height: device-height;
+  width: device-width;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
 }
 @keyframes App-logo-spin {
   from {
