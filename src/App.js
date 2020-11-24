@@ -3,16 +3,40 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
+// The class "square" creates a component of <Square/> that can be used in our JSX (think: fake HTML) below
+class Square extends React.Component {
+  constructor(props){
+    super(props);
+    this.getFancy = this.getFancy.bind(this);
+
+    this.state={ // Initialize the color - when blank as at startup, it'll just use the CSS to set the color. This could be anything, purple, green, whatever.
+      color: ""
+    }
+  }
+  getFancy() {
+    let fancyColor = '#'+ Math.floor(Math.random()*16777215).toString(16); 
+    this.setState({color: fancyColor}); // Changes the state color to the random color from the line above.
+    // console.log("here");
+   }
+
+  render(){
+    return (
+      <div
+      onMouseOver={this.getFancy} // runs the getFancy function on the specific moused-over element
+      className="fancyDiv"
+      style={{backgroundColor: this.state.color}} // Changes the background color to the currently-set state of color
+      ></div> 
+      )
+    }
+  }
+
 class App extends React.Component {
- render(){
+
+  render(){
  
     let divGrid = [];
-    
     for(let i = 0; i < 100; i++){
-      divGrid.push 
-        (<div
-          className="fancyDiv"
-        >X</div>)
+    divGrid.push(<Square/>) // See above? Where we make Square? That's actually happening here!
     }
     return (
     <div className="bigDiv">{divGrid}</div>
