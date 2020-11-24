@@ -4,46 +4,65 @@ import logo from './logo.svg';
 import './App.css';
 
 
+class Square extends React.Component {
+  constructor(props){
+    super(props);
+    this.getFancy = this.getFancy.bind(this);
+
+    this.state={
+      color: "purple"
+    }
+  }
+  getFancy() {
+    let fancyColor = '#'+ Math.floor(Math.random()*16777215).toString(16);
+    this.setState({color: fancyColor});
+    console.log("here");
+   }
+
+  render(){
+    return (
+      <div
+      onMouseOver={this.getFancy}
+      className="fancyDiv"
+      style={{backgroundColor: this.state.color}}
+      >{this.props.value}</div>
+      )
+    }
+  }
 
 class App extends React.Component {
  constructor(props){
   super(props);
-  this.state={
-    color: "purple"
-  }
-  this.getFancy = this.getFancy.bind(this);
-  this.Square = this.Square.bind(this);
+  
+  this.renderSquare = this.renderSquare.bind(this);
  }
- getFancy() {
-  let fancyColor = '#'+ Math.floor(Math.random()*16777215).toString(16);
-  this.setState({color: fancyColor});
-  console.log("here");
- }
-
- Square(props) {
  
-  return (
-    <div
-      onMouseOver={this.getFancy}
-      className="fancyDiv"
-      style={{backgroundColor: this.state.color}}
-    >{this.props.value}</div>
-  )
+renderSquare(props) {
+  return(
+<div
+     onMouseOver={this.getFancy}
+     className="fancyDiv"
+     style={{backgroundColor: this.state.color}}
+   >{props}</div>
+  );
 }
   render(){
  
-    let divGrid = [];
-    for(let i = 0; i < 100; i++){
-      divGrid.push(this.Square(i))
+    // let divGrid = [];
+    // for(let i = 0; i < 100; i++){
+      // divGrid.push(this.square(i))
+      // AN IDEA: Set the color inside the for loop??
+      // let currentColor = "style={{backgroundColor: this.state.color}}"
+
       // divGrid.push 
       //   (<div
       //     onMouseOver={this.getFancy}
       //     className="fancyDiv"
       //     style={{backgroundColor: this.state.color}}
       //   ></div>)
-    }
+    // }
     return (
-    <div className="bigDiv">{divGrid}</div>
+    <div className="bigDiv"><Square/><Square /></div>
   );
  }
 }
