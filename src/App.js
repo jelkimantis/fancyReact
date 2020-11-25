@@ -25,10 +25,8 @@ class Square extends React.Component {
    }
 
    unFancy() {
-    this.setState({getClassNames: "fancyDiv"});
+    this.setState({getClassNames: "fancyDiv"}); // Removes the "addShadow" div
    }
-
-   // box-shadow: 10px 10px 10px 10px;
 
   render(){
     return (
