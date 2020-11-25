@@ -8,22 +8,33 @@ class Square extends React.Component {
   constructor(props){
     super(props);
     this.getFancy = this.getFancy.bind(this);
+    this.unShadow = this.unShadow.bind(this);
 
     this.state={ // Initialize the color - when blank as at startup, it'll just use the CSS to set the color. This could be anything, purple, green, whatever.
-      color: ""
+      color: "",
+      getClassNames: "fancyDiv"
     }
   }
   getFancy() {
     let fancyColor = '#'+ Math.floor(Math.random()*16777215).toString(16); 
-    this.setState({color: fancyColor}); // Changes the state color to the random color from the line above.
+    this.setState({
+      color: fancyColor, 
+      getClassNames: "fancyDiv addShadow"
+    }); // Changes the state color to the random color from the line above.
     // console.log("here");
+   }
+
+   unShadow() {
+    this.setState({getClassNames: "fancyDiv"}); // Removes the "addShadow" div
    }
 
   render(){
     return (
       <div
       onMouseOver={this.getFancy} // runs the getFancy function on the specific moused-over element
-      className="fancyDiv"
+      onMouseOut={this.unShadow}
+      className={this.state.getClassNames}
+      // "fancyDiv addShadow"
       style={{backgroundColor: this.state.color}} // Changes the background color to the currently-set state of color
       ></div> 
       )
