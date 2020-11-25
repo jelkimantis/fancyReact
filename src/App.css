@@ -30,11 +30,16 @@
 body {
   background-color: gray;
 }
+
 .fancyDiv {
  height: 100%;
  width: 100%;
  background-color: gray;
 }
+.addShadow {
+  box-shadow: 10px 10px 10px 10px white;
+}
+
 .bigDiv {
   margin: 50px;
   height: calc(100vh - 100px);
